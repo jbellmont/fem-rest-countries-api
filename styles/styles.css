@@ -33,7 +33,7 @@ header {
   display: flex;
   height: 100px;
   justify-content: space-between;
-  padding: 0 15px;
+  padding: 0 20px;
 }
 
 .header-dark-mode {
@@ -112,4 +112,39 @@ textarea:focus, input:focus{
   .search-bar {
     width: 400px;
   }
+}
+
+
+/* FILTER DROPDOWN */
+.filter-container {
+  padding: 25px 20px;
+}
+
+.filter-dropdown {
+  align-items: center;
+  background-color: var(--dm-text-lm-elements-white);
+  border-radius: 6px;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  padding: 0 20px;
+  width: 200px;
+}
+
+.filter-content {
+  background-color: var(--dm-text-lm-elements-white);
+  border-radius: 6px;
+  box-shadow: var(--box-shadow);
+  display: none;
+  margin: 5px 0;
+  padding: 20px;
+  position: absolute;
+  width: 200px;
+}
+
+.filter-content a {
+  color: #000;
+  display: block;
+  text-decoration: none;
 }

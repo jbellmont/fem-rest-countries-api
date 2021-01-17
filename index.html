@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles/styles.css">
   <title>FE Mentor - Countries REST API challenge</title>
-  <script src="https://kit.fontawesome.com/b4895fab6a.js" crossorigin="anonymous"></script>
+  <script async="true" src="https://kit.fontawesome.com/b4895fab6a.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -23,13 +23,23 @@
       <div class="search-bar">
         <i class="fas fa-search search-icon"></i>
         <form action="">
-          <input type="text" name="search" value="" class="search-input" placeholder="Search for a country...">
+          <input type="text" name="country" value="" class="search-input" placeholder="Search for a country...">
         </form>
       </div>
     </div>
 
-    <div class="filter-dropdown">
-      
+    <div class="filter-container">
+      <div class="filter-dropdown">
+        <div class="filter-text">Filter by Region</div>
+        <div class="filter-caret"><i class="fas fa-caret-down"></i></div>
+      </div>
+      <div class="filter-content">
+        <a href="?region=africa">Africa</a>
+        <a href="?region=america">America</a>
+        <a href="?region=asia">Asia</a>
+        <a href="?region=europe">Europe</a>
+        <a href="?region=oceania">Oceania</a>
+      </div>
     </div>
 
     <div class="country-grid-container">
