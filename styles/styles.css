@@ -212,7 +212,7 @@ textarea:focus, input:focus{
   font-weight: 600;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 540px) {
   .country-grid-container {
     padding: 20px;
   }
