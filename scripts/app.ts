@@ -55,7 +55,7 @@ const createCountryItem = (country: API): void => {
 };
 
 
-const renderAllCountries = () => {
+const renderAllCountries = (): void => {
   fetch('https://restcountries.eu/rest/v2/all')
     .then(response => response.json())
     .then(data => {
@@ -64,5 +64,43 @@ const renderAllCountries = () => {
       }
     });
 };
-
 renderAllCountries();
+
+const renderSearchResults = (query: string): void => {
+  fetch(`https://restcountries.eu/rest/v2/name/${query}`)
+    .then(response => response.json())
+    .then(data => {
+      for (let country of data) {
+        createCountryItem(country);
+      }
+    });
+};
+// renderSearchResults('france');
+
+const renderFilterResult = (region: string): void => {
+  fetch(`https://restcountries.eu/rest/v2/region/${region}`)
+    .then(response => response.json())
+    .then(data => {
+      for (let country of data) {
+        createCountryItem(country);
+      }
+    });
+};
+// renderFilterResult('asia');
+
+const getQuery = (): string => {
+  if (window.location.search) {
+    const queryString: string[] = window.location.search.split('=');
+    return queryString[1];
+  }
+  return '';
+};
+
+getQuery();
+
+
+// Form search function
+const onCountrySearch = ():void => {
+  const searchQuery = getQuery();
+  renderSearchResults(searchQuery);
+};

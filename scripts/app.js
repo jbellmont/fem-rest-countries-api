@@ -26,3 +26,38 @@ var renderAllCountries = function () {
     });
 };
 renderAllCountries();
+var renderSearchResults = function (query) {
+    fetch("https://restcountries.eu/rest/v2/name/" + query)
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+        for (var _i = 0, data_2 = data; _i < data_2.length; _i++) {
+            var country = data_2[_i];
+            createCountryItem(country);
+        }
+    });
+};
+// renderSearchResults('france');
+var renderFilterResult = function (region) {
+    fetch("https://restcountries.eu/rest/v2/region/" + region)
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+        for (var _i = 0, data_3 = data; _i < data_3.length; _i++) {
+            var country = data_3[_i];
+            createCountryItem(country);
+        }
+    });
+};
+// renderFilterResult('asia');
+var getQuery = function () {
+    if (window.location.search) {
+        var queryString = window.location.search.split('=');
+        return queryString[1];
+    }
+    return '';
+};
+getQuery();
+// Form search function
+var onCountrySearch = function () {
+    var searchQuery = getQuery();
+    renderSearchResults(searchQuery);
+};
