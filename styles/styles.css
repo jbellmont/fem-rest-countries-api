@@ -179,12 +179,10 @@ textarea:focus, input:focus{
 .country-grid-container {
   column-gap: 40px;
   display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(250px, 0.7fr));
-
-  /* grid-template-columns: 0.70fr; */
   justify-content: center;
-  row-gap: 40px;
+  row-gap: 40px;  
+  padding-bottom: 25px;
 }
 
 .country-grid-item {
@@ -212,4 +210,16 @@ textarea:focus, input:focus{
 
 .country-metric-strong {
   font-weight: 600;
+}
+
+@media(min-width: 768px) {
+  .country-grid-container {
+    padding: 20px;
+  }
+}
+
+@media(min-width: 1024px) {
+  .country-grid-container {
+    padding: 0 var(--padding-sides-desktop) var(--padding-sides-desktop) var(--padding-sides-desktop);
+  }
 }
