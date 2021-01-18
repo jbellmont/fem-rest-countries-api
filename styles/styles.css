@@ -62,9 +62,10 @@ header {
 
 /* SEARCH BAR */
 
-.search-bar-container {
+.bars-container {
+  display: flex;
+  flex-direction: column;
   padding: 25px 20px;
-  text-align: center;
 }
 
 .search-bar {
@@ -74,6 +75,7 @@ header {
   box-shadow: var(--box-shadow);
   color: var(--lm-dark-gray-input);
   display: flex;
+  margin-bottom: 40px;
   width: 100%;
 }
 
@@ -101,6 +103,11 @@ textarea:focus, input:focus{
   .search-bar {
     width: 300px;
   }
+
+  .search-input {
+    width: 220px;
+  }
+  
 }
 
 @media(min-width: 1024px) {
@@ -112,13 +119,14 @@ textarea:focus, input:focus{
   .search-bar {
     width: 400px;
   }
+
+  .search-input {
+    width: 320px;
+  }
 }
 
 
 /* FILTER DROPDOWN */
-.filter-container {
-  padding: 25px 20px;
-}
 
 .filter-dropdown {
   align-items: center;
@@ -147,4 +155,21 @@ textarea:focus, input:focus{
   color: #000;
   display: block;
   text-decoration: none;
+}
+
+@media(min-width: 768px) {
+  .bars-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .search-bar {
+    margin-bottom: 0;
+  }
+}
+
+@media(min-width: 1024px) {
+  .bars-container {
+    padding: 40px var(--padding-sides-desktop);
+  }
 }
