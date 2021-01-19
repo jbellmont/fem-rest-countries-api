@@ -145,6 +145,10 @@ textarea:focus, input:focus{
   width: 200px;
 }
 
+.filter-dropdown-visible {
+  display: block;
+}
+
 .filter-content {
   background-color: var(--dm-text-lm-elements-white);
   border-radius: 6px;

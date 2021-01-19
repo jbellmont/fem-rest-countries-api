@@ -96,3 +96,13 @@ const getQuery = (): string[] => {
 };
 
 onStartUp();
+
+
+// DOM Interactivity
+const onFilterClick = (): void => {
+  const filterElement: HTMLElement = <HTMLElement>document.querySelector('.filter-content');
+  filterElement.style.display === 'block' ? filterElement.style.display = 'none' 
+                                          : filterElement.style.display = 'block';  
+};
+
+document.querySelector('.filter-dropdown')?.addEventListener('click', onFilterClick);

@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 // Render country-items functions
 var createCountryItem = function (country) {
     var _a;
@@ -58,3 +59,10 @@ var getQuery = function () {
     return window.location.search.split('=');
 };
 onStartUp();
+// DOM Interactivity
+var onFilterClick = function () {
+    var filterElement = document.querySelector('.filter-content');
+    filterElement.style.display === 'block' ? filterElement.style.display = 'none'
+        : filterElement.style.display = 'block';
+};
+(_a = document.querySelector('.filter-dropdown')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', onFilterClick);
