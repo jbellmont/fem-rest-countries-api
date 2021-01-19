@@ -1,13 +1,5 @@
 "use strict";
-var getCountryData = function (country) {
-    fetch("https://restcountries.eu/rest/v2/name/" + country)
-        .then(function (response) { return response.json(); });
-};
-var getRegionData = function (region) {
-    fetch("https://restcountries.eu/rest/v2/region/" + region)
-        .then(function (response) { return response.json(); });
-};
-// Render country-items
+// Render country-items functions
 var createCountryItem = function (country) {
     var _a;
     var newItem = document.createElement('div');
@@ -25,7 +17,6 @@ var renderAllCountries = function () {
         }
     });
 };
-renderAllCountries();
 var renderSearchResults = function (query) {
     fetch("https://restcountries.eu/rest/v2/name/" + query)
         .then(function (response) { return response.json(); })
@@ -36,7 +27,6 @@ var renderSearchResults = function (query) {
         }
     });
 };
-// renderSearchResults('france');
 var renderFilterResult = function (region) {
     fetch("https://restcountries.eu/rest/v2/region/" + region)
         .then(function (response) { return response.json(); })
@@ -47,17 +37,24 @@ var renderFilterResult = function (region) {
         }
     });
 };
-// renderFilterResult('asia');
-var getQuery = function () {
-    if (window.location.search) {
-        var queryString = window.location.search.split('=');
-        return queryString[1];
-    }
-    return '';
-};
-getQuery();
-// Form search function
-var onCountrySearch = function () {
+// On page-load scripts
+var onStartUp = function () {
     var searchQuery = getQuery();
-    renderSearchResults(searchQuery);
+    // If no query, show all countries
+    if (!searchQuery[0]) {
+        renderAllCountries();
+        // Country search query
+    }
+    else if (searchQuery[0] === '?country') {
+        renderSearchResults(searchQuery[1]);
+        // Region filter
+    }
+    else {
+        renderFilterResult(searchQuery[1]);
+    }
 };
+// Returns the search query string
+var getQuery = function () {
+    return window.location.search.split('=');
+};
+onStartUp();

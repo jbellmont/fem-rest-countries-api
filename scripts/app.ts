@@ -25,18 +25,8 @@ interface API {
   cioc: string;
 }
 
-const getCountryData = (country: string) => {
-  fetch(`https://restcountries.eu/rest/v2/name/${country}`)
-  .then(response => response.json());
-};
 
-const getRegionData = (region: string) => {
-  fetch(`https://restcountries.eu/rest/v2/region/${region}`)
-  .then(response => response.json());
-};
-
-
-// Render country-items
+// Render country-items functions
 const createCountryItem = (country: API): void => {
   const newItem: HTMLDivElement = document.createElement('div');
   newItem.classList.add('country-grid-item');
@@ -54,7 +44,6 @@ const createCountryItem = (country: API): void => {
   document.querySelector('.country-grid-container')?.append(newItem);
 };
 
-
 const renderAllCountries = (): void => {
   fetch('https://restcountries.eu/rest/v2/all')
     .then(response => response.json())
@@ -64,7 +53,6 @@ const renderAllCountries = (): void => {
       }
     });
 };
-renderAllCountries();
 
 const renderSearchResults = (query: string): void => {
   fetch(`https://restcountries.eu/rest/v2/name/${query}`)
@@ -75,7 +63,6 @@ const renderSearchResults = (query: string): void => {
       }
     });
 };
-// renderSearchResults('france');
 
 const renderFilterResult = (region: string): void => {
   fetch(`https://restcountries.eu/rest/v2/region/${region}`)
@@ -86,21 +73,26 @@ const renderFilterResult = (region: string): void => {
       }
     });
 };
-// renderFilterResult('asia');
-
-const getQuery = (): string => {
-  if (window.location.search) {
-    const queryString: string[] = window.location.search.split('=');
-    return queryString[1];
-  }
-  return '';
-};
-
-getQuery();
 
 
-// Form search function
-const onCountrySearch = ():void => {
+// On page-load scripts
+const onStartUp = ():void => {
   const searchQuery = getQuery();
-  renderSearchResults(searchQuery);
+  // If no query, show all countries
+  if (!searchQuery[0]) {
+    renderAllCountries();
+  // Country search query
+  } else if (searchQuery[0] === '?country') {
+    renderSearchResults(searchQuery[1]);
+  // Region filter
+  } else {
+    renderFilterResult(searchQuery[1]);
+  }
 };
+
+// Returns the search query string
+const getQuery = (): string[] => {
+  return window.location.search.split('=');
+};
+
+onStartUp();

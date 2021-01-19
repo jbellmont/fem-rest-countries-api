@@ -36,6 +36,11 @@ header {
   padding: 0 20px;
 }
 
+.header-title a {
+  color: #000;
+  text-decoration: none;
+}
+
 .header-dark-mode {
   font-weight: 600;
 }
