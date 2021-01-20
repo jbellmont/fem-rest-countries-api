@@ -236,6 +236,7 @@ textarea:focus, input:focus{
 
 /* DETAILS PAGE */
 
+/* BACK BUTTON */
 .btn-container {
   padding: 35px 20px;
 }
@@ -257,4 +258,23 @@ textarea:focus, input:focus{
   .btn-container {
     padding: 45px var(--padding-sides-desktop);
   }
+}
+
+/* COUNTRY DETAILS */
+.country-details-container {
+  padding: 35px 20px;
+}
+
+@media(min-width: 1024px) {
+  .country-details-container {
+    padding: 45px var(--padding-sides-desktop);
+  }
+}
+
+.country-details-flag img {
+  width: 100%;
+}
+
+.country-details-text {
+  padding: 40px 0;
 }
