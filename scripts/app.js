@@ -1,11 +1,10 @@
-"use strict";
 var _a;
 // Render country-items functions
 var createCountryItem = function (country) {
     var _a;
     var newItem = document.createElement('div');
     newItem.classList.add('country-grid-item');
-    newItem.innerHTML = "\n    <div class=\"country-flag\"><img src=\"" + country.flag + "\" alt=\"" + country.name + " flag\"></div>\n    <div class=\"country-text\">\n      <h2>" + country.name + "</h2>\n      <ul>\n        <li><span class=\"country-metric-strong\">Population: </span>" + country.population + "</li>\n        <li><span class=\"country-metric-strong\">Region: </span>" + country.region + "</li>\n        <li><span class=\"country-metric-strong\">Capital: </span>" + country.capital + "</li>\n      </ul>\n    </div>\n  ";
+    newItem.innerHTML = "\n  <div onclick=\"location.href='details.html?countryDetails=" + country.name + "';\">\n    <div class=\"country-flag\"><img src=\"" + country.flag + "\" alt=\"" + country.name + " flag\"></div>\n    <div class=\"country-text\">\n      <h2>" + country.name + "</h2>\n      <ul>\n        <li><span class=\"country-metric-strong\">Population: </span>" + country.population + "</li>\n        <li><span class=\"country-metric-strong\">Region: </span>" + country.region + "</li>\n        <li><span class=\"country-metric-strong\">Capital: </span>" + country.capital + "</li>\n      </ul>\n    </div>\n  </div>\n  ";
     (_a = document.querySelector('.country-grid-container')) === null || _a === void 0 ? void 0 : _a.append(newItem);
 };
 var renderAllCountries = function () {
@@ -66,3 +65,4 @@ var onFilterClick = function () {
         : filterElement.style.display = 'block';
 };
 (_a = document.querySelector('.filter-dropdown')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', onFilterClick);
+export { getQuery };

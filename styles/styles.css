@@ -132,6 +132,10 @@ textarea:focus, input:focus{
 
 
 /* FILTER DROPDOWN */
+.filter-container:hover {
+  cursor: pointer;
+}
+
 
 .filter-dropdown {
   align-items: center;
@@ -198,6 +202,10 @@ textarea:focus, input:focus{
   background-color: var(--dm-text-lm-elements-white);
   border-radius: 6px;
   box-shadow: var(--box-shadow);
+}
+
+.country-grid-item:hover {
+  cursor: pointer;
 }
 
 .country-flag img {

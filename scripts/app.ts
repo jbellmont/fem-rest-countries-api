@@ -31,6 +31,7 @@ const createCountryItem = (country: API): void => {
   const newItem: HTMLDivElement = document.createElement('div');
   newItem.classList.add('country-grid-item');
   newItem.innerHTML = `
+  <div onclick="location.href='details.html?countryDetails=${country.name}';">
     <div class="country-flag"><img src="${country.flag}" alt="${country.name} flag"></div>
     <div class="country-text">
       <h2>${country.name}</h2>
@@ -40,6 +41,7 @@ const createCountryItem = (country: API): void => {
         <li><span class="country-metric-strong">Capital: </span>${country.capital}</li>
       </ul>
     </div>
+  </div>
   `;
   document.querySelector('.country-grid-container')?.append(newItem);
 };
@@ -106,3 +108,6 @@ const onFilterClick = (): void => {
 };
 
 document.querySelector('.filter-dropdown')?.addEventListener('click', onFilterClick);
+
+
+export { getQuery, API }; 
