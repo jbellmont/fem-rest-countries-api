@@ -232,3 +232,29 @@ textarea:focus, input:focus{
     padding: 0 var(--padding-sides-desktop) var(--padding-sides-desktop) var(--padding-sides-desktop);
   }
 }
+
+
+/* DETAILS PAGE */
+
+.btn-container {
+  padding: 35px 20px;
+}
+
+.btn-back {
+  background-color: var(--dm-text-lm-elements-white);
+  border: 0;
+  border-radius: 3px;
+  box-shadow: var(--box-shadow);
+  height: 35px;
+  width: 100px;
+}
+
+.btn-back:hover {
+  cursor: pointer;
+}
+
+@media(min-width: 1024px) {
+  .btn-container {
+    padding: 45px var(--padding-sides-desktop);
+  }
+}
