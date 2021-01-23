@@ -18,21 +18,29 @@ const createCountryDetails = (country: API): void => {
         <div class="country-details-text-info-col-2">
           <ul>
             <li><span class="country-metric-strong">Top Level Domain: </span> ${country.topLevelDomain}</li>
-            <li><span class="country-metric-strong">Currencies: </span> ${country.currencies}</li>
-            <li><span class="country-metric-strong">Language: </span> ${country.languages}</li>
+            <li><span class="country-metric-strong">Currencies: </span> ${country.currencies[0].name}</li>
+            <li><span class="country-metric-strong">Language: </span> ${country.languages[0].name}</li>
           </ul>
         </div>
       </div>
       <div class="country-details-text-border-countries">
         <h3>Border Countries:</h3>
         <div class="country-details-button-container">
-          <button class="btn" onclick="location.href='?countryDetails=france';">France</button>
-          <button class="btn" onclick="location.href='?countryDetails=france';">France</button>
-          <button class="btn" onclick="location.href='?countryDetails=france';">France</button>
+
         </div>
       </div>
     </div>
   `;
+
+  // for each border country, invoke createBorderButton(country)
+};
+
+const createBorderButton = (countryName: string): void => {
+  const newButton: HTMLButtonElement = document.createElement('button');
+  newButton.addEventListener('click', () => location.href=`?countryDetails=${countryName}`);
+  newButton.classList.add('btn');
+  newButton.innerText = `${countryName}`;
+  document.querySelector('.country-details-button-container')?.append(newButton);
 };
 
 const renderCountryDetails = (query: string): void => {
@@ -40,12 +48,34 @@ const renderCountryDetails = (query: string): void => {
     .then(response => response.json())
     .then(data => {
       createCountryDetails(data[0]);
+      
+      // destructure data[0].borders into new array
+      const borderCodes: string[] = [...data[0].borders];
+
+      // create new URL and forEach code, append it to end of URL, 
+      let getURL = 'https://restcountries.eu/rest/v2/alpha?codes=';
+      borderCodes.forEach(code => {
+        if (code !== borderCodes[borderCodes.length - 1]) {
+          getURL = getURL + code + ';';
+        } else {
+          getURL = getURL + code;
+        }
+      });
+
+      // new GET request for border countries only
+      fetch(getURL)
+        .then(response => response.json())
+        .then(data => {
+          const countries: API[] = [...data];
+          countries.forEach(country => createBorderButton(country.name));
+        });
+    
+
     });
 };
 
 const onDetailsStartUp = () => {
   const country = getQuery();
-  console.log(country);
   renderCountryDetails(country[1]);
 };
 

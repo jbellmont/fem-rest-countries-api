@@ -17,8 +17,8 @@ interface API {
   borders: [];
   nativeName: string;
   numericCode: string;
-  currencies: [];
-  languages: [];
+  currencies: [ { code: string, name: string, symbol: string}];
+  languages: [ { [info: string]: string }];
   translations: {};
   flag: string;
   regionalBlocs: [];
