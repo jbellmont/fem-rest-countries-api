@@ -36,7 +36,7 @@ const createCountryItem = (country: API): void => {
     <div class="country-text">
       <h2>${country.name}</h2>
       <ul>
-        <li><span class="country-metric-strong">Population: </span>${country.population}</li>
+        <li><span class="country-metric-strong">Population: </span>${country.population.toString().replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,")}</li>
         <li><span class="country-metric-strong">Region: </span>${country.region}</li>
         <li><span class="country-metric-strong">Capital: </span>${country.capital}</li>
       </ul>
